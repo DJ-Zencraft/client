@@ -1,19 +1,26 @@
 @import '../../styles/variables';
 
-.dep-page {
+.sto-page {
     width: 100%;
     height: calc(100vh - 75px);
     display: flex;
     gap: 15px;
+    padding: 20px;
+    background: #f5f5f5;
 
-    &__users-list-container {
-        min-width: 500px;
-        max-width: 500px;
-        border-right: 1px solid $color-dirtywhite;
-        box-shadow: 1px 0px 4px -3px $color-delimitershadow;
-        padding: 0 10px 0 0;
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
+    &__sidebar {
+        width: 350px;
+        background: white;
+        border-radius: 8px;
+        padding: 15px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    &__main-content {
+        flex: 1;
+        background: white;
+        border-radius: 8px;
+        padding: 20px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 }

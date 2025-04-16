@@ -1,41 +1,47 @@
 import { FC } from 'react';
 import { LayoutProps } from "./LayoutProps";
 import './layoutStyles.scss';
-import { LogoIcon } from '../../../assets/icons/LogoIcon'
+import { LogoIcon } from '../../../assets/icons/LogoIcon';
 import { UserMenu } from '../../userMenu';
+import { RoutePaths } from '../../../constants/commonConstants';
+import { useNavigate } from 'react-router-dom';
 
-export const Layout: FC<LayoutProps> = props =>{
-    const{
-        footer,
-        headerChild,
-        title,
-        children
-    } = props;
+export const Layout: FC<LayoutProps> = (props) => {
+    const { footer, children } = props;
 
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+      // Очистка данных авторизации
+      localStorage.removeItem('authToken');
+      // Переход на страницу входа
+      navigate(RoutePaths.Login);
+    };
+  
     return (
-        <div className='layout'>
-            <div className='Layout__header'>
-                <div>
-                    <LogoIcon/>
-                </div>
-                <div>
-                    <div>{title ?? 'База СТО'}</div>
-                    <div>{headerChild}</div>
-                </div>
-                <div className="layout__user-menu">
-                    <UserMenu items={[{
-                        id: 'go_to_administration',
-                        action: () =>{},
-                        label: 'Администрирование'
-                        },{
-                        id: 'exit',
-                        action: () => {},
-                        label: 'Выйти'
-                        }]} />
-                </div>
-            </div>
-            <div className="layout__body">{children}</div>
-            <div>{footer}</div>
-        </div>
+      <div className='layout'>
+        <header className='layout__header'>
+          <div className='layout__brand'>
+            <LogoIcon width={32} height={32} />
+            <span className='layout__title'>База СТО</span>
+          </div>
+          
+          <UserMenu 
+          items={[
+            {
+              id: 'logout',
+              action: handleLogout, // Используем обработчик
+              label: 'Назад'
+              }
+            ]} 
+          />
+        </header>
+  
+        <main className='layout__content'>
+          {children}
+        </main>
+  
+        {footer && <footer className='layout__footer'>{footer}</footer>}
+      </div>
     );
-}
+  };

@@ -25,7 +25,6 @@ export const UserMenu: FC<UserMenuProps> = props => {
 
     return(
         <div className="user-menu">
-            <Button text="Войти" onClick={loginHandler} type="primary"/>
             <UserIcon onClick = {showMenuHandler} />
             {show && (
                 <>

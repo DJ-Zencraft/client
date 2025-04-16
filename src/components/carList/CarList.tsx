@@ -2,44 +2,54 @@ import { FC, useState } from 'react';
 import clsx from 'classnames';
 import { CarListProps } from "./CarListProps";
 import { PencilIcon, TrashIcon } from "../../assets/icons";
-import './employeesListStyles.scss'
+import './carListStyles.scss'; // Переименованный файл стилей
 
 export const CarList: FC<CarListProps> = props => {
-    const {carList, onItemClick, onItemDelete, onItemEdit} = props
-    const [selectedUser, setSelectedUser] = useState(0)
+    const { carList, onItemClick, onItemDelete, onItemEdit } = props;
+    const [selectedCarId, setSelectedCarId] = useState<number | null>(null);
 
-    const employeeClickHandler = (id: number) => {
-        setSelectedUser(id)
-        onItemClick && onItemClick(id)
-    }
+    const handleCarSelect = (id: number) => {
+        setSelectedCarId(id);
+        onItemClick?.(id);
+    };
 
-    const employeeEditHandler = (id: number) => {
-        onItemEdit && onItemEdit(id)
-    }
-
-    const employeeDeleteHandler = (id: number) => {
-        onItemDelete && onItemDelete(id)
-    }
-
-    const isSelected = (id: number) => selectedUser === id
-
-    return(
-        <div className="empl-list">
-            {carList.map(user =>{
-                    return(
-                        <div key={user.id} 
-                        className={clsx('empl-list__item', {'empl-list__item_selected': isSelected(user.id)})}
-                        onClick={() => employeeClickHandler(user.id)}>
-                            <div className="empl-list__item-fio">
-                                {`${user.mark} ${user.model} группа ${user.ownerFIO}`.trim()}
-                            </div>
-                            <div className="empl-list__item-action">
-                                <PencilIcon width={18} height={18} onClick={() => {employeeEditHandler(user.id)}}/>
-                                <TrashIcon width={18} height={18} onClick={() => {employeeDeleteHandler(user.id)}}/>
-                            </div>
-                        </div>
-                    )
-                })}
+    return (
+        <div className="car-list">
+            {carList.map(car => (
+                <div 
+                    key={car.id}
+                    className={clsx('car-list__item', {
+                        'car-list__item--selected': selectedCarId === car.id
+                    })}
+                    onClick={() => handleCarSelect(car.id)}
+                >
+                    <div className="car-list__info">
+                        <h4>{car.mark} {car.model}</h4>
+                        <p>Владелец: {car.ownerFIO}</p>
+                    </div>
+                    
+                    <div className="car-list__actions">
+                        <button 
+                            className="car-list__action-btn"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                onItemEdit?.(car.id);
+                            }}
+                        >
+                            <PencilIcon width={18} height={18}/>
+                        </button>
+                        <button
+                            className="car-list__action-btn"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                onItemDelete?.(car.id);
+                            }}
+                        >
+                            <TrashIcon width={18} height={18}/>
+                        </button>
+                    </div>
+                </div>
+            ))}
         </div>
-    )
-}
+    );
+};

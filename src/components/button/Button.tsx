@@ -8,7 +8,8 @@ export const Button: FC<ButtonProps> = props => {
         className,
         onClick,
         text,
-        type
+        type,
+        disabled
     }=props;
 
     return (

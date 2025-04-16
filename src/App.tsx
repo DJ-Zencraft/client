@@ -1,4 +1,5 @@
 import React from 'react';
+import { ServicesPage } from './pages/Services';
 import { LoginPage } from './pages';
 import { TesPage } from './pages/STO';
 import { Route, Routes } from 'react-router-dom'
@@ -12,7 +13,8 @@ export const App: React.FC = () => {
   <Routes>
     <Route path={RoutePaths.Login} element={<LoginPage />}/>
     <Route path={RoutePaths.Registration} element={<RegistrationPage />} />
-    <Route path={RoutePaths.STO} element={<STOPage/>} />
+    <Route path={`${RoutePaths.STO}/:serviceId`} element={<STOPage />} />
+    <Route path={RoutePaths.Services} element={<ServicesPage />} />
     <Route path={RoutePaths.Tes} element={<TesPage/>} />
     <Route path={'*'} element={<LoginPage />} />
   </Routes>

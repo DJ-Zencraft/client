@@ -1,0 +1,54 @@
+@import '../../styles/variables.scss';
+
+.car-list {
+    &__item {
+        padding: 12px;
+        margin-bottom: 8px;
+        border-radius: 6px;
+        border: 1px solid #eee;
+        cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        transition: background 0.2s;
+
+        &:hover {
+            background: #f8f8f8;
+        }
+
+        &--selected {
+            background: #e3f2fd;
+            border-color: #90caf9;
+        }
+    }
+
+    &__info {
+        h4 {
+            margin: 0 0 4px;
+            font-size: 16px;
+        }
+        
+        p {
+            margin: 0;
+            font-size: 14px;
+            color: #666;
+        }
+    }
+
+    &__actions {
+        display: flex;
+        gap: 8px;
+        align-items: center;
+    }
+
+    &__action-btn {
+        background: none;
+        border: none;
+        cursor: pointer;
+        padding: 4px;
+        border-radius: 4px;
+        
+        &:hover {
+            background: #eee;
+        }
+    }
+}

@@ -1,0 +1,33 @@
+@import '../../styles/variables';
+
+.service-list {
+  &__item {
+    padding: 12px;
+    margin-bottom: 8px;
+    border-radius: 6px;
+    border: 1px solid $color-border; // Исправляем здесь
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background: rgba($color-primary, 0.05); // И здесь
+    }
+
+    &--selected {
+      background: rgba($color-primary, 0.1); // И здесь
+      border-left: 4px solid $color-primary; // И здесь
+    }
+  }
+
+  &__title {
+    margin: 0 0 4px;
+    font-size: 16px;
+    color: $color-text-primary; // И здесь
+  }
+
+  &__detail {
+    margin: 0;
+    font-size: 14px;
+    color: $color-text-secondary; // И здесь
+  }
+}
