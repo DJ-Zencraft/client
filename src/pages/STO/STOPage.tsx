@@ -12,7 +12,9 @@ export const STOPage: FC = () => {
                         text: 'Otdel 1', value: '1'
                     },{
                         text: 'Otdel 2', value: '2'
-                    }]} label="Сервисы Тех Осмотра: " />
+                    }]} label="Сервисы Тех Осмотра: " 
+                    selectedChanged={(value) => console.log(value)} // Добавляем обработчик
+                    />
                     <div>
                         Список Сотруднкиов
                     </div>
