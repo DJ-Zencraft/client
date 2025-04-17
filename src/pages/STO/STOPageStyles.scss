@@ -24,3 +24,27 @@
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 }
+
+.car-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.car-info {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    
+    p {
+        margin: 10px 0;
+        font-size: 16px;
+    }
+}
+
+.car-map {
+    height: 400px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}

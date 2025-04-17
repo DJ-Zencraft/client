@@ -5,6 +5,7 @@ import { LogoIcon } from '../../../assets/icons/LogoIcon';
 import { UserMenu } from '../../userMenu';
 import { RoutePaths } from '../../../constants/commonConstants';
 import { useNavigate } from 'react-router-dom';
+import { ChatWidget } from '../../chat/ChatWidget';
 
 export const Layout: FC<LayoutProps> = (props) => {
     const { footer, children } = props;
@@ -42,6 +43,7 @@ export const Layout: FC<LayoutProps> = (props) => {
         </main>
   
         {footer && <footer className='layout__footer'>{footer}</footer>}
+        <ChatWidget />
       </div>
     );
   };

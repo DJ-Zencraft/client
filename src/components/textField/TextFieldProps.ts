@@ -9,6 +9,8 @@ export interface TextFieldProps {
     info?: string;
     infoType?: InfoType;
     value?: string;
+    disabled?: boolean;
+    onEnter?: (value: string) => void;
     onChange?: (value: string) => void;
     lblWeight?: LabelWeight;
     placeholder?: string; // Добавляем пропс
